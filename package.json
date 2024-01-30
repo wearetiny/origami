@@ -1,0 +1,70 @@
+{
+  "name": "origami",
+  "displayName": "Origami CSS/SCSS Formatter",
+  "description": "Origami is a lightweight VS Code extension that formats CSS and SCSS files into a single line, making your stylesheets compact and easy to read in a 'minified-like' format. Perfect for developers who prefer a streamlined view of their styles.",
+  "author": "Rick Knowlton | tiny.",
+  "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wearetiny/origami"
+  },
+  "version": "0.1.0",
+  "publisher": "wearetiny",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.toggleFormatCSS",
+    "onLanguage:css",
+    "onLanguage:scss"
+  ],
+  "main": "extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.toggleFormatCSS",
+        "title": "Toggle CSS/SCSS Format"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.toggleFormatCSS",
+        "key": "ctrl+cmd+o",
+        "mac": "cmd+ctrl+o",
+        "when": "editorTextFocus && editorLangId == css || editorLangId == scss"
+      }
+    ],
+    "configuration": {
+      "properties": {
+        "origami.unfoldMethod": {
+          "type": "string",
+          "enum": [
+            "lastKnown",
+            "prettier",
+            "default"
+          ],
+          "default": "lastKnown",
+          "markdownDescription": "Method to use for unfolding CSS/SCSS. Choose 'lastKnown' to revert to the previous state, 'prettier' to use the Prettier formatter, or 'default' for a simple built-in format."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}

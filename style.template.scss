@@ -1,0 +1,218 @@
+/* CONFIG */
+@import "_partials/_config.part";
+
+/* SETUP */
+@import "_partials/defaults.part";
+@import "_partials/grid.part";
+
+@import "_partials/layout.part";
+@import "_partials/header.part";
+@import "_partials/navigation.part";
+
+@import "_partials/content.part";
+@import "_partials/modules.part";
+@import "_partials/partials.part";
+
+@import "_partials/footer.part";
+@import "_partials/social.part";
+@import "_partials/plugins.part";
+@import "_partials/loader.part";
+
+/* WORDPRESS */
+@import "_partials/wp-layout.part";
+
+@import "_partials/wp-post.part";
+@import "_partials/wp-comments.part";
+@import "_partials/wp-nav.part";
+
+@import "_partials/wp-content.part";
+@import "_partials/wp-widgets.part";
+@import "_partials/wp-blocks.part";
+
+@import "_partials/wp-woocommerce.part";
+@import "_partials/wp-gravity-forms.part";
+
+/* STICKY FIXES FOR ABSOLUTE ITEMS
+================================================== */
+// #wpadminbar{position:absolute!important;top:-32px!important}
+#wpadminbar {
+  position: absolute !important;
+  top: 0 !important;
+}
+body.admin-bar {
+  padding-top: 32px !important;
+}
+@media only screen and (max-width: 782px) {
+  // #wpadminbar{top:-46px!important}
+  #wpadminbar {
+    top: 0 !important;
+  }
+  body.admin-bar {
+    padding-top: 46px !important;
+  }
+}
+
+.content-block {
+  background-color: $secondaryColor;
+  min-width: 60%;
+  max-width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-block {
+  width: 50%;
+  position: relative;
+  left: -10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.media-block img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.text-wrapper {
+  padding: 10% 20% 10% 10%;
+}
+
+.emphasis-text {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.intro .content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.full-bleed {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.full-bleed::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  opacity: 0.7;
+}
+
+.background-full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+// Misc Front Page Sections
+
+.page-content > .container,
+.page-content > main > .container {
+  padding-top: 0 !important;
+}
+
+.item-short a img {
+  height: 250px;
+  min-width: 100%;
+}
+
+.masonry-container {
+  display: flex;
+}
+
+.masonry-column {
+  flex: 1;
+  padding: 20px;
+}
+
+.masonry-item {
+  width: 100%;
+  background-color: lightgray;
+  // margin: 10px 0;
+  text-align: center;
+  // padding: 20px;
+}
+
+.masonry-item:hover {
+  cursor: pointer;
+  box-shadow: inset 6.5em 0 0 0 var(adjust-hue($secondaryColor, 45deg));
+  filter: brightness(115%);
+  -webkit-filter: brightness(115%);
+  -moz-filter: brightness(115%);
+}
+
+.item1 {
+  height: 300px;
+}
+
+.item2 {
+  height: 600px;
+  background-color: $secondaryColor;
+}
+
+.item3 {
+  height: 600px;
+  background-color: $secondaryColor;
+}
+
+.item4 {
+  height: 300px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+/* Testimonial Section */
+.testimonial .content-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.testimonial .media-block {
+  width: 50%;
+  position: relative;
+  right: -10%; // Overlapping towards right
+  z-index: 2; // Ensure media-block is on top
+}
+
+.testimonial .content-block {
+  min-width: 60%;
+  max-width: 60%;
+  position: relative; // Adjust position for overlap
+  z-index: 1; // Lower z-index than media-block
+}
+
+@media (max-width: 768px) {
+  /* Adjustments for smaller screens */
+  .testimonial .media-block,
+  .testimonial .content-block {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    position: relative;
+    right: 0;
+    z-index: auto;
+  }
+}
